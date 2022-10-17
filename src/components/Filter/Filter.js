@@ -1,10 +1,12 @@
 import React from 'react'
 import { func } from 'prop-types';
 import classes from './Filter.module.css';
-
-const Filter = ({ onHandleFilter }) => {
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/contacts/filterSlice';
+const Filter = () => {
+    const dispatch = useDispatch();
     const setFilterValue = e => {
-        onHandleFilter(e.currentTarget.value.toUpperCase());
+        dispatch(setFilter(e.currentTarget.value.toUpperCase()));
     };
     return (
         <div className={classes.container}>

@@ -8,6 +8,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { contactsApi } from './contacts/slice';
+import filterReducer from './contacts/filterSlice';
 
 const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
@@ -21,6 +22,8 @@ const middleware = getDefaultMiddleware => [
 export const store = configureStore({
   reducer: {
     [contactsApi.reducerPath]: contactsApi.reducer,
+    filter: filterReducer,
+
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
